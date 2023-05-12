@@ -1,0 +1,769 @@
+/* 
+==============
+Google fonts 
+==============
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&family=Grand+Hotel&display=swap");
+
+/* body {
+  font-family: "Catamaran", sans-serif;
+  font-family: "Grand Hotel", cursive;
+} */
+
+/* 
+==============
+Variables 
+==============
+*/
+
+:root {
+  --clr-primary: #678e3e;
+  --clr-primary-light: #beed8c;
+  --clr-grey-1-dark: #102a42;
+  --clr-grey-5-semi-light: #617d98;
+  --clr-grey-10-light: #f1f5f8;
+  --clr-white: #fff;
+  --ff-primary: "Catamaran", sans-serif;
+  --ff-secondary: "Grand Hotel", cursive;
+  --transition: all 0.3s linear;
+  --letter-spacing: 0.25rem;
+  --radius: 0.5rem;
+  --card-shadow: 0 5px 15px rgb(0, 0, 0, 0.1);
+  --card-shadow-hover: 0 5px 15px rgb(0, 0, 0, 0.2);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--ff-primary);
+  background-color: var(--clr-white);
+  color: var(--clr-grey-1-dark);
+  line-height: 1.5;
+  /* the font value below is equivalent to 14px */
+  font-size: 0.875rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  letter-spacing: var(--letter-spacing);
+  text-transform: capitalize;
+  /* since the font-size for the headings is going to be bigger i made the line-height to be 1.25(a bit smaller) instead of 1.5 */
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+}
+
+h1 {
+  font-size: 3rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.5rem;
+}
+h4 {
+  font-size: 0.875rem;
+}
+
+p {
+  margin-bottom: 1.25rem;
+}
+
+@media screen and (min-width: 800px) {
+  /* here i would want to increase my font size since it's a bigger screen*/
+  h1 {
+    font-size: 4rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  body {
+    font-size: 1rem;
+  }
+  /* Sine I'm increasing the font size i would also like to decrease the line height for the headings */
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1;
+  }
+}
+/* more global css */
+.btn {
+  text-transform: uppercase;
+  background-color: var(--clr-primary);
+  color: var(--clr-white);
+  padding: 0.375rem 0.75rem;
+  letter-spacing: var(--letter-spacing);
+  display: inline-block;
+  font-weight: 700;
+  transition: var(--transition);
+  font-size: 0.875rem;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  color: var(--clr-primary);
+  background-color: var(--clr-primary-light);
+}
+
+.clearfix::after,
+.clearfix::before {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.section-title h3 {
+  font-family: var(--ff-secondary);
+  color: var(--clr-primary);
+}
+
+.section-title {
+  margin-bottom: 2rem;
+}
+
+.section-center {
+  padding: 4rem 0;
+  width: 85vw;
+  margin: 0 auto;
+  max-width: 1170px;
+}
+
+@media screen and (min-width: 992px) {
+  .section-center {
+    width: 95vw;
+    padding: 4rem 1rem;
+  }
+}
+
+/* 
+==============
+Animation
+==============
+*/
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(1000px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-200px);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateX(50px);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes slideFromLeft {
+  0% {
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(200px);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateX(-50px);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes show {
+  0% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 
+==============
+Navbar
+==============
+*/
+
+.nav-btn {
+  position: fixed;
+  top: 5%;
+  left: 5%;
+  font-size: 2.5rem;
+  color: var(--clr-primary);
+  z-index: 1;
+  cursor: pointer;
+
+  /* animation */
+  animation: bounce 2s ease infinite;
+}
+
+/* navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  /* we can use the right and bottom values below or we use width and height to  ame the nav span all across the screen */
+  right: 0;
+  bottom: 0;
+
+  /* using the width and height */
+
+  /* width: 100%;
+  height: 100%; */
+  background-color: var(--clr-grey-10-light);
+  z-index: 2;
+  box-shadow: 2px 0 2px rgb(0, 0, 0, 0.2);
+  /* hide navbar */
+  transform: translateX(-100%);
+  transition: var(--transition);
+  /* transition: all 0.5s ease-in-out; */
+}
+
+.showNav {
+  transform: translate(0);
+}
+
+.navbar-header {
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.nav-close {
+  font-size: 2.5rem;
+  cursor: pointer;
+  color: #f29c9c;
+  transition: var(--transition);
+}
+
+.nav-close:hover {
+  color: #bb2525;
+}
+
+.nav-items {
+  list-style-type: none;
+}
+
+.nav-link {
+  /* links by default are displayed inline so to make the links to span across the navbar I set the values to display block. */
+  display: block;
+  font-size: 1.5rem;
+  padding: 0.25rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+  color: var(--clr-grey-5-semi-light);
+  transition: var(--transition);
+}
+
+.nav-link:hover {
+  background-color: var(--clr-primary-light);
+  color: var(--clr-primary);
+  padding-left: 1.5rem;
+  border-left: 0.25rem solid var(--clr-primary);
+}
+
+@media screen and (min-width: 768px) {
+  .navbar {
+    width: 30%;
+    max-width: 20rem;
+  }
+}
+
+/* 
+==============
+Header
+==============
+*/
+.header {
+  min-height: 100vh;
+  /* bacground property short hand cannot work with specific property of background-image */
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("../images/main-bg.jpg") center/cover no-repeat fixed;
+
+  /* mobile don't support fixed property */
+
+  /* background property complete */
+  /* background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+*/
+  position: relative;
+
+  /* animation */
+  overflow-x: hidden;
+}
+
+.banner {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.banner h2 {
+  font-family: var(--ff-secondary);
+  color: var(--clr-primary);
+  /* animation */
+  animation: slideFromRight 5s ease-in 1;
+}
+
+.banner h1 {
+  text-transform: uppercase;
+  color: var(--clr-white);
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  /* animation */
+  animation: slideFromLeft 5s ease-in 1;
+}
+
+.banner-btn {
+  outline: 0.125rem solid var(--clr-primary);
+  outline-offset: 0.25rem;
+  font-size: 1.25rem;
+  padding: 1rem 1.75rem;
+  /* animation */
+  animation: show 5s linear 2;
+}
+
+.content-divider {
+  height: 0.5rem;
+  background-image: linear-gradient(
+    to left,
+    var(--clr-primary),
+    #e9b949,
+    var(--clr-primary)
+  );
+}
+
+/* 
+==============
+Skills
+==============
+*/
+
+.skills {
+  background-color: var(--clr-grey-10-light);
+}
+
+.skill {
+  padding: 2.5rem 0;
+  text-align: center;
+  /* I'm adding transition because on nhover we will be changing the backhround abd adding the bos shadow so we want it to be implememented overtime */
+  transition: var(--transition);
+}
+
+.skill-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1.25rem;
+  /* I added the transition  because i want it to be lifted up a bit on hover */
+  transition: var(--transition);
+
+  /* I'm displayin as inline-block because even though i have nargin-bottom to 1.25 rem it's not working because span is an inline element and browser doesn't respect the margin*/
+  display: inline-block;
+  color: var(--clr-primary);
+}
+
+.skill-text {
+  color: var(--clr-grey-5-semi-light);
+  /* tomake sure that my text is not spanning all across my div 100% i added a width to it */
+  max-width: 17rem;
+  /* we use the margin below to center the paragph as we have set gthe width and text align no longer works */
+  margin: 0 auto;
+}
+
+.skill:hover {
+  background-color: var(--clr-white);
+  box-shadow: 0 2px var(--clr-primary);
+}
+
+.skill:hover .skill-icon {
+  /* lifting up the icon on hover */
+  transform: translateY(-5px);
+}
+
+@media screen and (min-width: 576px) {
+  .skill {
+    float: left;
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .skill {
+    width: 25%;
+  }
+}
+
+/* 
+==============
+About
+==============
+*/
+
+.about-img,
+.about-info {
+  padding: 2rem 0;
+}
+
+.about-picture-container {
+  background-color: var(--clr-grey-1-dark);
+  border: 0.5rem solid var(--clr-primary);
+  max-width: 30rem;
+  /* extra style */
+  overflow: hidden;
+}
+
+.about-picture {
+  transition: var(--transition);
+}
+.about-picture-container:hover .about-picture {
+  opacity: 0.5;
+  transform: scale(1.2);
+}
+
+.about-text {
+  max-width: 26rem;
+  color: var(--clr-grey-5-semi-light);
+}
+@media screen and (min-width: 992px) {
+  .about-img,
+  .about-info {
+    float: left;
+    width: 50%;
+  }
+  .about-info {
+    padding-left: 2rem;
+  }
+}
+
+/* 
+==============
+Products
+==============
+*/
+
+.products {
+  background-color: var(--clr-grey-10-light);
+}
+.products article {
+  padding: 2rem 0;
+}
+
+.product-text {
+  color: var(--clr-grey-5-semi-light);
+  max-width: 26rem;
+}
+.product {
+  margin-bottom: 2rem;
+}
+.product-img {
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+  height: 17rem;
+  /* object fit resolves the issues when the height is distorting the image quality */
+  object-fit: cover;
+}
+
+.product-price {
+  color: var(--clr-primary);
+}
+
+@media screen and (min-width: 768px) {
+  .product {
+    float: left;
+    width: 50%;
+    padding-right: 2rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .product {
+    /* to get 3 column layout at 992px we divide 100 the 100% of the width by 3 and set the given value to the width */
+    width: 33.3%;
+  }
+}
+
+/* having all the products section in a column  */
+@media screen and (min-width: 1200px) {
+  .products-info {
+    float: left;
+    width: 30%;
+  }
+
+  .products-inventory {
+    float: left;
+    width: 70%;
+  }
+  .product {
+    margin-bottom: 0;
+    padding: 0 1rem;
+  }
+}
+
+/* 
+==============
+Services
+==============
+*/
+
+.services-title {
+  margin-top: 4rem;
+  margin-bottom: -4rem;
+  text-align: center;
+}
+
+.service-card {
+  margin: 2rem 0;
+  background-color: var(--clr-grey-10-light);
+  border-radius: var(--radius);
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+}
+
+.service-card:hover {
+  transform: scale(1.02);
+  box-shadow: var(--card-shadow-hover);
+}
+
+.service-img {
+  height: 17rem;
+  object-fit: cover;
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+
+/* icon */
+.service-img-container {
+  position: relative;
+}
+
+.service-icon {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  font-size: 2rem;
+  color: var(--clr-primary);
+  background-color: var(--clr-primary-light);
+  padding: 0.25rem 0.6rem;
+  border-radius: 50%;
+  /* the transform is making the icon sitted in the center with the negative 50% and making it move down with the postive 50% at that position */
+  transform: translate(-50%, 50%);
+  border: 0.375rem solid var(--clr-grey-10-light);
+}
+
+.service-info {
+  text-align: center;
+  padding: 3rem 1rem 2.5rem 1rem;
+}
+
+.service-info p {
+  max-width: 2orem;
+  color: var(--clr-grey-5-semi-light);
+  margin: 0 auto;
+}
+
+.service-btn {
+  font-size: 0.75rem;
+  text-transform: capitalize;
+  padding: 0.375rem 0.5rem;
+
+  /* i decided to leave the btn without border radius */
+  /* border-radius: var(--radius); */
+  font-weight: 400;
+  margin-top: 1.25rem;
+  outline: 1px solid var(--clr-primary-light);
+  outline-offset: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  .service-card {
+    float: left;
+    width: 45%;
+    margin-right: 5%;
+    /* 100% if am going to have a 2 column layout i will have to set it as 50% width but in this ase for everything to look perfect i will substract the margin of 5% from the 50% so width will be 45and margin 5 margin everything to sum upto still 100% */
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .service-card {
+    width: 30%;
+    margin-right: 3.333%;
+
+    /* 100% 30% 3.333% */
+  }
+}
+
+/* 
+==============
+Contact
+==============
+*/
+.contact {
+  background-color: var(--clr-grey-10-light);
+}
+
+.contact-form,
+.contact-info {
+  margin: 1rem 0;
+}
+
+.contact-item {
+  margin-bottom: 1.75rem;
+}
+
+.contact-title {
+  color: var(--clr-primary);
+  font-weight: 400;
+}
+
+.contact-text {
+  text-transform: uppercase;
+}
+
+.contact-form {
+  background-color: var(--clr-white);
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  max-width: 35rem;
+}
+
+.contact-form:hover {
+  box-shadow: var(--card-shadow-hover);
+}
+
+.contact-form h3 {
+  padding-top: 1.25rem;
+  color: var(--clr-grey-5-semi-light);
+}
+
+.form-group {
+  padding: 1rem 1.5rem;
+}
+
+.form-control {
+  /* to start on each other */
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: none;
+  margin-bottom: 1.25rem;
+  background-color: var(--clr-grey-10-light);
+  border-radius: var(--radius);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+}
+
+.form-control::placeholder {
+  font-family: var(--ff-primary);
+  color: var(--clr-grey-1-dark);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing);
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 1rem;
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+
+@media screen and (min-width: 992px) {
+  .contact-info,
+  .contact-form {
+    float: left;
+    width: 50%;
+  }
+}
+
+/* 
+==============
+Footer
+==============
+*/
+
+.footer {
+  background-color: #222;
+  text-align: center;
+}
+
+.social-icon {
+  color: var(--clr-white);
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  transition: var(--transition);
+}
+
+.social-icon:hover {
+  color: var(--clr-primary);
+}
+
+.footer-text {
+  margin-top: 1.25rem;
+  text-transform: uppercase;
+  color: var(--clr-white);
+  font-weight: 400;
+}
+
+.company {
+  color: var(--clr-primary);
+}
